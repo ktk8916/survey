@@ -1,0 +1,56 @@
+### 설문조사 생성
+POST http://localhost:8080/api/v1/surveys
+Content-Type: application/json
+
+{
+  "name": "폼이름",
+  "description": "폼설명",
+  "surveyItems": [
+    {
+      "name": "폼 아이템1",
+      "description": "폼 아이템 설명1",
+      "isRequired": true,
+      "surveyItemType": "SHORT_ANSWER",
+      "selectOptions": []
+    },
+    {
+      "name": "폼 아이템2",
+      "description": "폼 아이템 설명2",
+      "isRequired": true,
+      "surveyItemType": "SHORT_ANSWER",
+      "selectOptions": []
+    },
+    {
+      "name": "폼 아이템3",
+      "description": "폼 아이템 설명3",
+      "isRequired": true,
+      "surveyItemType": "SHORT_ANSWER",
+      "selectOptions": []
+    }
+  ]
+}
+
+### 설문조사 수정
+POST http://localhost:8080/api/v1/surveys/aaa
+Content-Type: application/json
+
+{
+  "name": "폼이름바꿈",
+  "description": "폼설명바꿈",
+  "surveyItems": [
+    {
+      "name": "폼 아이템 두개로 줄임",
+      "description": "폼 아이템 설명1",
+      "isRequired": true,
+      "surveyItemType": "SHORT_ANSWER",
+      "selectOptions": []
+    },
+    {
+      "name": "폼 아이템22222222222222",
+      "description": "폼 아이템 설명2",
+      "isRequired": true,
+      "surveyItemType": "SHORT_ANSWER",
+      "selectOptions": []
+    }
+  ]
+}
