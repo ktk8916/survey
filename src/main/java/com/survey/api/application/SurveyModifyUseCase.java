@@ -1,12 +1,11 @@
 package com.survey.api.application;
 
-import com.survey.api.domain.survey.form.SurveyFormAppender;
-import com.survey.api.domain.survey.form.SurveyModifyCommand;
-import com.survey.api.domain.survey.form.SurveyVersion;
-import com.survey.api.domain.survey.form.SurveyVersionReader;
+import com.survey.api.domain.survey.form.*;
 import com.survey.api.domain.survey.item.SurveyItemManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +15,7 @@ public class SurveyModifyUseCase {
     private final SurveyFormAppender surveyFormAppender;
     private final SurveyItemManager surveyItemManager;
 
-    public long modify(String surveyVersionKey, SurveyModifyCommand command) {
+    public long modify(SurveyVersionKey surveyVersionKey, SurveyModifyCommand command) {
         SurveyVersion latestVersion = surveyVersionReader.readLatest(surveyVersionKey);
         long surveyFormId = surveyFormAppender.appendLater(
                 latestVersion,

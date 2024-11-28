@@ -11,11 +11,11 @@ public class SurveyVersionReader {
 
     private final SurveyVersionRepository surveyVersionRepository;
 
-    public SurveyVersion readLatest(String surveyVersionKey) {
+    public SurveyVersion readLatest(SurveyVersionKey surveyVersionKey) {
         return surveyVersionRepository.findLatestBySurveyVersionKey(surveyVersionKey)
                 .orElseThrow(() -> new SurveyAppException(
                         ExceptionCode.NOT_FOUND,
-                        String.format("not found survey version %s", surveyVersionKey))
+                        String.format("survey version %s", surveyVersionKey))
                 );
     }
 }

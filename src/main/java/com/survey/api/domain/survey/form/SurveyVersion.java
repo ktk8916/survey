@@ -8,18 +8,21 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SurveyVersion {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String surveyVersionKey;
+    private SurveyVersionKey surveyVersionKey;
     private Long surveyVersionNumber;
 
-    public static SurveyVersion first(String surveyVersionKey) {
+    // TODO : 수정..
+    public static SurveyVersion first(SurveyVersionKeyGenerator generator) {
         return SurveyVersion.builder()
-                .surveyVersionKey(surveyVersionKey)
+                .surveyVersionKey(generator.generate())
                 .surveyVersionNumber(1L)
                 .build();
     }
@@ -40,7 +43,7 @@ public class SurveyVersion {
     }
 
     @Builder(access = AccessLevel.PRIVATE)
-    private SurveyVersion(Long id, String surveyVersionKey, Long surveyVersionNumber) {
+    private SurveyVersion(Long id, SurveyVersionKey surveyVersionKey, Long surveyVersionNumber) {
         this.id = id;
         this.surveyVersionKey = surveyVersionKey;
         this.surveyVersionNumber = surveyVersionNumber;

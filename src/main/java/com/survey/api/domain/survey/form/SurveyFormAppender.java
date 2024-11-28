@@ -10,10 +10,11 @@ public class SurveyFormAppender {
 
     private final SurveyFormRepository surveyFormRepository;
     private final SurveyVersionRepository surveyVersionRepository;
+    private final SurveyVersionKeyGenerator surveyVersionKeyGenerator;
 
     @Transactional
     public long append(String name, String description) {
-        SurveyVersion firstVersion = SurveyVersion.first("aaa");
+        SurveyVersion firstVersion = SurveyVersion.first(surveyVersionKeyGenerator);
         SurveyVersion savedFirstVersion = surveyVersionRepository.save(firstVersion);
 
         SurveyForm surveyForm = SurveyForm.begin(savedFirstVersion, name, description);
@@ -23,7 +24,6 @@ public class SurveyFormAppender {
 
     @Transactional
     public long appendLater(SurveyVersion previousVersion, String name, String description) {
-        // TODO : 메서드 명 변경
         SurveyVersion nextVersion = SurveyVersion.next(previousVersion);
         SurveyVersion savedNextVersion = surveyVersionRepository.save(nextVersion);
 
