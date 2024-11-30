@@ -1,31 +1,29 @@
 package com.survey.api.domain.survey.item;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "survey_item_select_option")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SurveyItemSelectOption {
+public class SurveyItemSelectOptionEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long surveyItemId;
     private String content;
 
-    public static SurveyItemSelectOption create(long surveyItemId, String content) {
-        return SurveyItemSelectOption.builder()
+    public static SurveyItemSelectOptionEntity create(long surveyItemId, String content) {
+        return SurveyItemSelectOptionEntity.builder()
                 .surveyItemId(surveyItemId)
                 .content(content)
                 .build();
     }
 
     @Builder(access = AccessLevel.PRIVATE)
-    private SurveyItemSelectOption(Long id, Long surveyItemId, String content) {
+    private SurveyItemSelectOptionEntity(Long id, Long surveyItemId, String content) {
         this.id = id;
         this.surveyItemId = surveyItemId;
         this.content = content;

@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface SurveyItemSelectOptionRepository {
 
-    <S extends SurveyItemSelectOption> List<S> saveAll(Iterable<S> SurveyItemSelectOptions);
+    <S extends SurveyItemSelectOptionEntity> List<S> saveAll(Iterable<S> SurveyItemSelectOptions);
 }

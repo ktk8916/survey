@@ -5,8 +5,6 @@ import com.survey.api.domain.survey.item.SurveyItemManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 @RequiredArgsConstructor
 public class SurveyModifyUseCase {
@@ -16,7 +14,7 @@ public class SurveyModifyUseCase {
     private final SurveyItemManager surveyItemManager;
 
     public long modify(SurveyVersionKey surveyVersionKey, SurveyModifyCommand command) {
-        SurveyVersion latestVersion = surveyVersionReader.readLatest(surveyVersionKey);
+        SurveyVersionEntity latestVersion = surveyVersionReader.readLatest(surveyVersionKey);
         long surveyFormId = surveyFormAppender.appendLater(
                 latestVersion,
                 command.name(),

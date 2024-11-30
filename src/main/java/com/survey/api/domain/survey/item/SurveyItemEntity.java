@@ -6,8 +6,9 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "survey_item")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SurveyItem {
+public class SurveyItemEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,8 +23,8 @@ public class SurveyItem {
         return id;
     }
 
-    public static SurveyItem create(long surveyFormId, String name, String description, boolean isRequired, SurveyItemType itemType) {
-        return SurveyItem.builder()
+    public static SurveyItemEntity create(long surveyFormId, String name, String description, boolean isRequired, SurveyItemType itemType) {
+        return SurveyItemEntity.builder()
                 .surveyFormId(surveyFormId)
                 .name(name)
                 .description(description)
@@ -33,7 +34,7 @@ public class SurveyItem {
     }
 
     @Builder(access = AccessLevel.PRIVATE)
-    private SurveyItem(Long id, Long surveyFormId, String name, String description, boolean isRequired, SurveyItemType itemType) {
+    private SurveyItemEntity(Long id, Long surveyFormId, String name, String description, boolean isRequired, SurveyItemType itemType) {
         this.id = id;
         this.surveyFormId = surveyFormId;
         this.name = name;

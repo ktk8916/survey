@@ -4,6 +4,6 @@ import java.util.Optional;
 
 public interface SurveyVersionRepository {
 
-    Optional<SurveyVersion> findLatestBySurveyVersionKey(SurveyVersionKey surveyVersionKey);
-    SurveyVersion save(SurveyVersion surveyVersion);
+    Optional<SurveyVersionEntity> findLatestBySurveyVersionKey(SurveyVersionKey surveyVersionKey);
+    SurveyVersionEntity save(SurveyVersionEntity surveyVersion);
 }

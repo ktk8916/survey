@@ -17,8 +17,8 @@ public class SurveyItemSelectOptionAppender {
         }
 
         List<String> contents = itemSelectOptions.getOptions();
-        List<SurveyItemSelectOption> selectOptions = contents.stream()
-                .map(content -> SurveyItemSelectOption.create(surveyItemId, content))
+        List<SurveyItemSelectOptionEntity> selectOptions = contents.stream()
+                .map(content -> SurveyItemSelectOptionEntity.create(surveyItemId, content))
                 .toList();
         surveyItemSelectOptionRepository.saveAll(selectOptions);
     }

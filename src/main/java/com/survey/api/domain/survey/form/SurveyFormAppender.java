@@ -14,21 +14,21 @@ public class SurveyFormAppender {
 
     @Transactional
     public long append(String name, String description) {
-        SurveyVersion firstVersion = SurveyVersion.first(surveyVersionKeyGenerator);
-        SurveyVersion savedFirstVersion = surveyVersionRepository.save(firstVersion);
+        SurveyVersionEntity firstVersion = SurveyVersionEntity.first(surveyVersionKeyGenerator);
+        SurveyVersionEntity savedFirstVersion = surveyVersionRepository.save(firstVersion);
 
-        SurveyForm surveyForm = SurveyForm.begin(savedFirstVersion, name, description);
-        SurveyForm savedSurveyForm = surveyFormRepository.save(surveyForm);
+        SurveyFormEntity surveyForm = SurveyFormEntity.begin(savedFirstVersion, name, description);
+        SurveyFormEntity savedSurveyForm = surveyFormRepository.save(surveyForm);
         return savedSurveyForm.getId();
     }
 
     @Transactional
-    public long appendLater(SurveyVersion previousVersion, String name, String description) {
-        SurveyVersion nextVersion = SurveyVersion.next(previousVersion);
-        SurveyVersion savedNextVersion = surveyVersionRepository.save(nextVersion);
+    public long appendLater(SurveyVersionEntity previousVersion, String name, String description) {
+        SurveyVersionEntity nextVersion = SurveyVersionEntity.next(previousVersion);
+        SurveyVersionEntity savedNextVersion = surveyVersionRepository.save(nextVersion);
 
-        SurveyForm surveyForm = SurveyForm.release(savedNextVersion, name, description);
-        SurveyForm savedSurveyForm = surveyFormRepository.save(surveyForm);
+        SurveyFormEntity surveyForm = SurveyFormEntity.release(savedNextVersion, name, description);
+        SurveyFormEntity savedSurveyForm = surveyFormRepository.save(surveyForm);
         return savedSurveyForm.getId();
     }
 }

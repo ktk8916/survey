@@ -11,7 +11,7 @@ public class SurveyVersionReader {
 
     private final SurveyVersionRepository surveyVersionRepository;
 
-    public SurveyVersion readLatest(SurveyVersionKey surveyVersionKey) {
+    public SurveyVersionEntity readLatest(SurveyVersionKey surveyVersionKey) {
         return surveyVersionRepository.findLatestBySurveyVersionKey(surveyVersionKey)
                 .orElseThrow(() -> new SurveyAppException(
                         ExceptionCode.NOT_FOUND,
