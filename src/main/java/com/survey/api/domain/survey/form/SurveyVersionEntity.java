@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "survey_veersion")
+@Table(name = "survey_version")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SurveyVersionEntity {
 
