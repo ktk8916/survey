@@ -22,6 +22,13 @@ public class SurveyItemEntity {
     public long getId() {
         return id;
     }
+    public long getSurveyFormId() {
+        return surveyFormId;
+    }
+
+    public SurveyItemType getItemType() {
+        return itemType;
+    }
 
     public static SurveyItemEntity create(long surveyFormId, String name, String description, boolean isRequired, SurveyItemType itemType) {
         return SurveyItemEntity.builder()

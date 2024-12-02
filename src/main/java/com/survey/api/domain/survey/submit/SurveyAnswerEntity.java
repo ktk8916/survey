@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SurveyAnswer {
+public class SurveyAnswerEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long surveyFormId;
     private Long surveyItemId;
-    private SurveyItemType itemType;
-
+    private String questionAnswer;
+    private Integer selectedOption;
 }
