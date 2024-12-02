@@ -54,3 +54,43 @@ Content-Type: application/json
     }
   ]
 }
+
+### 설문조사 답변
+POST http://localhost:8080/api/v1/surveys/1/answers
+Content-Type: application/json
+
+[
+  {
+    "surveyItemId": 1,
+    "itemAnswers": [
+      {
+        "shortQuestionAnswer": "s1",
+        "longQuestionAnswer": null,
+        "singleChoiceItemAnswer": null,
+        "multipleChoiceItemAnswer": null
+      }
+    ]
+  },
+  {
+    "surveyItemId": 2,
+    "itemAnswers": [
+      {
+        "shortQuestionAnswer": "s2",
+        "longQuestionAnswer": null,
+        "singleChoiceItemAnswer": null,
+        "multipleChoiceItemAnswer": null
+      }
+    ]
+  },
+  {
+    "surveyItemId": 3,
+    "itemAnswers": [
+      {
+        "shortQuestionAnswer": "s3",
+        "longQuestionAnswer": null,
+        "singleChoiceItemAnswer": null,
+        "multipleChoiceItemAnswer": null
+      }
+    ]
+  }
+]
