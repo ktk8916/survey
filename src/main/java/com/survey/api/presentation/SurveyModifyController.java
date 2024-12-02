@@ -20,10 +20,10 @@ public class SurveyModifyController {
             @PathVariable String surveyVersionKey,
             @RequestBody SurveyModifyRequest request
     ) {
-        long surveyId = surveyModifyUseCase.modify(
+        long surveyFormId = surveyModifyUseCase.modify(
                 SurveyVersionKey.from(surveyVersionKey),
                 request.toCommand()
         );
-        return ApiResponse.success(surveyId);
+        return ApiResponse.success(surveyFormId);
     }
 }

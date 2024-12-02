@@ -9,8 +9,11 @@ public class ShortSurveyAnswer implements SurveyAnswerItem {
     private final Long surveyItemId;
     private final String value;
 
-    public static ShortSurveyAnswer of(long surveyFormId, SurveyAnswerSubmitCommand command) {
-        return new ShortSurveyAnswer(surveyFormId, command.surveyItemId(), command.questionAnswer());
+    public static ShortSurveyAnswer of(long surveyFormId, SurveySubmitCommand command) {
+        return new ShortSurveyAnswer(
+                surveyFormId,
+                command.surveyItemId(),
+                command.getShortQuestionAnswer());
     }
 
     private ShortSurveyAnswer(long surveyFormId, long surveyItemId, String value) {
@@ -24,6 +27,11 @@ public class ShortSurveyAnswer implements SurveyAnswerItem {
 
     @Override
     public List<SurveyAnswerEntity> toEntities() {
-        return null;
+        SurveyAnswerEntity answerEntity = SurveyAnswerEntity.ofShortQuestion(
+                surveyFormId,
+                surveyItemId,
+                value
+        );
+        return List.of(answerEntity);
     }
 }

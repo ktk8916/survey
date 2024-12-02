@@ -9,11 +9,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SurveyAnswersAppender {
 
-    private final SurveySubmitRepository surveySubmitRepository;
+    private final SurveyAnswerRepository surveyAnswerRepository;
 
     public void append(List<SurveyAnswerItem> surveyAnswerItems) {
         surveyAnswerItems.forEach(
-                surveyAnswerItem -> surveySubmitRepository.saveAll(surveyAnswerItem.toEntities())
+                surveyAnswerItem -> surveyAnswerRepository.saveAll(surveyAnswerItem.toEntities())
         );
     }
 }

@@ -14,7 +14,7 @@ public class SurveySubmitManager {
     private final SurveyAnswerItemFactory surveyAnswerItemFactory;
     private final SurveyAnswersAppender surveyAnswersAppender;
 
-    public void submit(List<SurveyItemEntity> surveyItems, List<SurveyAnswerSubmitCommand> surveyAnswerCommands) {
+    public void submit(List<SurveyItemEntity> surveyItems, List<SurveySubmitCommand> surveyAnswerCommands) {
         if (surveyItems.size() != surveyAnswerCommands.size()) {
             throw new IllegalArgumentException();
         }
@@ -22,7 +22,10 @@ public class SurveySubmitManager {
         List<SurveyAnswerItem> surveyAnswerItems = IntStream.range(0, surveyItems.size())
                 .mapToObj(index -> {
                     SurveyItemEntity surveyItem = surveyItems.get(index);
-                    SurveyAnswerSubmitCommand command = surveyAnswerCommands.get(index);
+                    SurveySubmitCommand command = surveyAnswerCommands.get(index);
+                    if (surveyItem.getId() != command.surveyItemId()) {
+                        throw new IllegalArgumentException();
+                    }
                     return surveyAnswerItemFactory.create(surveyItem.getSurveyFormId(), surveyItem.getItemType(), command);
                 })
                 .toList();
