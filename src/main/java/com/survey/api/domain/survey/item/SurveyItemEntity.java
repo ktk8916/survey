@@ -19,7 +19,7 @@ public class SurveyItemEntity {
     @Enumerated(EnumType.STRING)
     private SurveyItemType itemType;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public long getSurveyFormId() {
