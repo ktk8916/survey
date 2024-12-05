@@ -24,6 +24,12 @@ public class SurveyItemSelectOptions {
         return options;
     }
 
+    private SurveyItemSelectOptions(SurveyItemType itemType, List<String> options) {
+        validate(itemType, options);
+        this.itemType = itemType;
+        this.options = options;
+    }
+
     private void validate(SurveyItemType itemType, List<String> options) {
         if (itemType.isMultipleChoiceType() && options.isEmpty()) {
             throw new SurveyAppException(
@@ -45,11 +51,5 @@ public class SurveyItemSelectOptions {
                     String.format("option size must be less than %d", MAX_OPTION_SIZE)
             );
         }
-    }
-
-    private SurveyItemSelectOptions(SurveyItemType itemType, List<String> options) {
-        validate(itemType, options);
-        this.itemType = itemType;
-        this.options = options;
     }
 }
