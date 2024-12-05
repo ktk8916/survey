@@ -26,6 +26,22 @@ public class SurveyAnswerEntity {
                 .build();
     }
 
+    public static SurveyAnswerEntity ofLongQuestion(long surveyFormId, long surveyItemId, String longQuestionAnswer) {
+        return SurveyAnswerEntity.builder()
+                .surveyFormId(surveyFormId)
+                .surveyItemId(surveyItemId)
+                .longQuestionAnswer(longQuestionAnswer)
+                .build();
+    }
+
+    public static SurveyAnswerEntity ofMultipleChoice(long surveyFormId, long surveyItemId, int selectedOption) {
+        return SurveyAnswerEntity.builder()
+                .surveyFormId(surveyFormId)
+                .surveyItemId(surveyItemId)
+                .selectedOption(selectedOption)
+                .build();
+    }
+
     @Builder(access = AccessLevel.PRIVATE)
     private SurveyAnswerEntity(Long id, Long surveyFormId, Long surveyItemId, String shortQuestionAnswer, String longQuestionAnswer, Integer selectedOption) {
         this.id = id;

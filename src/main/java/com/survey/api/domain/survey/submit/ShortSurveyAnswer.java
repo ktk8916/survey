@@ -5,8 +5,8 @@ import java.util.List;
 public class ShortSurveyAnswer implements SurveyAnswerItem {
 
     private static final int SHORT_SURVEY_ANSWER_MAX_LENGTH = 200;
-    private final Long surveyFormId;
-    private final Long surveyItemId;
+    private final long surveyFormId;
+    private final long surveyItemId;
     private final String value;
 
     public static ShortSurveyAnswer of(long surveyFormId, SurveySubmitCommand command) {

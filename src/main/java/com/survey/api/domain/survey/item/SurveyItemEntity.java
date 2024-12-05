@@ -26,6 +26,13 @@ public class SurveyItemEntity {
         return surveyFormId;
     }
 
+    public boolean isRequired () {
+        return isRequired;
+    }
+    public boolean isOptional() {
+        return !isRequired;
+    }
+
     public SurveyItemType getItemType() {
         return itemType;
     }

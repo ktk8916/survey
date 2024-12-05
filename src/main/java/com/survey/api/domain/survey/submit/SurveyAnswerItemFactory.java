@@ -6,11 +6,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class SurveyAnswerItemFactory {
 
-    public SurveyAnswerItem create(long surveyFormId, SurveyItemType itemType, SurveySubmitCommand command) {
+    public SurveyAnswerItem create(SurveyItemType itemType, long surveyFormId, SurveySubmitCommand command) {
         return switch (itemType) {
             case SHORT_ANSWER -> ShortSurveyAnswer.of(surveyFormId, command);
-            default -> throw new RuntimeException();
+            case LONG_ANSWER -> LongSurveyAnswer.of(surveyFormId, command);
+            case SINGLE_SELECT -> SingleChoiceSurveyAnswer.of(surveyFormId, command);
+            case MULTIPLE_SELECT -> MultipleChoiceSurveyAnswerItem.of(surveyFormId, command);
         };
-
     }
 }
