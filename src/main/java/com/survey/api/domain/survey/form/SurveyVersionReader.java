@@ -15,7 +15,7 @@ public class SurveyVersionReader {
         return surveyVersionRepository.findLatestBySurveyVersionKey(surveyVersionKey)
                 .orElseThrow(() -> new SurveyAppException(
                         ExceptionCode.NOT_FOUND,
-                        String.format("survey version %s", surveyVersionKey))
+                        String.format("survey version %s", surveyVersionKey.value()))
                 );
     }
 }
