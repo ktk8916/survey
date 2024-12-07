@@ -1,6 +1,6 @@
 package com.survey.api.presentation;
 
-import com.survey.api.application.SurveyModifyUseCase;
+import com.survey.api.application.SurveyModifyService;
 import com.survey.api.domain.survey.form.SurveyVersionKey;
 import com.survey.api.global.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class SurveyModifyController {
 
-    private final SurveyModifyUseCase surveyModifyUseCase;
+    private final SurveyModifyService surveyModifyService;
 
     @PostMapping("/v1/surveys/{surveyVersionKey}")
     @ResponseStatus(HttpStatus.CREATED)
@@ -20,7 +20,7 @@ public class SurveyModifyController {
             @PathVariable String surveyVersionKey,
             @RequestBody SurveyModifyRequest request
     ) {
-        long surveyFormId = surveyModifyUseCase.modify(
+        long surveyFormId = surveyModifyService.modify(
                 SurveyVersionKey.from(surveyVersionKey),
                 request.toCommand()
         );

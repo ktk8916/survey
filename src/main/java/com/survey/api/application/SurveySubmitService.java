@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class SurveySubmitUseCase {
+public class SurveySubmitService {
 
     private final SurveyItemReader surveyItemReader;
     private final SurveySubmitManager surveySubmitManager;

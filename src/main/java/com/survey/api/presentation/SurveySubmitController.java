@@ -1,6 +1,6 @@
 package com.survey.api.presentation;
 
-import com.survey.api.application.SurveySubmitUseCase;
+import com.survey.api.application.SurveySubmitService;
 import com.survey.api.global.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class SurveySubmitController {
 
-    private final SurveySubmitUseCase surveySubmitUseCase;
+    private final SurveySubmitService surveySubmitService;
 
     @PostMapping("/v1/surveys/{surveyFormId}/answers")
     @ResponseStatus(HttpStatus.CREATED)
@@ -21,7 +21,7 @@ public class SurveySubmitController {
             @PathVariable long surveyFormId,
             @RequestBody List<SurveyAnswerSubmitRequest> answers
     ) {
-        surveySubmitUseCase.submit(
+        surveySubmitService.submit(
                 surveyFormId,
                 answers.stream()
                         .map(SurveyAnswerSubmitRequest::toCommand)

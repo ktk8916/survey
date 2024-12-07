@@ -3,14 +3,13 @@ package com.survey.api.application;
 import com.survey.api.domain.survey.form.SurveyCreateCommand;
 import com.survey.api.domain.survey.form.SurveyFormAppender;
 import com.survey.api.domain.survey.item.SurveyItemManager;
-import com.survey.api.domain.survey.item.SurveyItemType;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class SurveyCreateUseCase {
+public class SurveyCreateService {
 
     private final SurveyFormAppender surveyFormAppender;
     private final SurveyItemManager surveyItemManager;

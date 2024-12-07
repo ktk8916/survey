@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class SurveyModifyUseCase {
+public class SurveyModifyService {
 
     private final SurveyVersionReader surveyVersionReader;
     private final SurveyFormAppender surveyFormAppender;
