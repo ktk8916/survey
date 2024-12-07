@@ -16,7 +16,7 @@ Content-Type: application/json
     {
       "name": "폼 아이템2",
       "description": "폼 아이템 설명2",
-      "isRequired": true,
+      "isRequired": false,
       "surveyItemType": "SHORT_ANSWER",
       "selectOptions": []
     },
@@ -65,17 +65,6 @@ Content-Type: application/json
     "itemAnswers": [
       {
         "shortQuestionAnswer": "s1",
-        "longQuestionAnswer": null,
-        "singleChoiceItemAnswer": null,
-        "multipleChoiceItemAnswer": null
-      }
-    ]
-  },
-  {
-    "surveyItemId": 2,
-    "itemAnswers": [
-      {
-        "shortQuestionAnswer": "s2",
         "longQuestionAnswer": null,
         "singleChoiceItemAnswer": null,
         "multipleChoiceItemAnswer": null

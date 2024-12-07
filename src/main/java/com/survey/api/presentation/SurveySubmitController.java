@@ -24,7 +24,7 @@ public class SurveySubmitController {
         surveySubmitService.submit(
                 surveyFormId,
                 answers.stream()
-                        .map(SurveyAnswerSubmitRequest::toCommand)
+                        .map(SurveyAnswerSubmitRequest::toDomain)
                         .toList()
         );
         return ApiResponse.success(surveyFormId);

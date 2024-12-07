@@ -5,21 +5,21 @@ import com.survey.api.global.SurveyAppException;
 
 import java.util.List;
 
-public class MultipleChoiceSurveyAnswerItem implements SurveyAnswerItem {
+public class MultipleChoiceSurveyItemAnswer implements SurveyItemAnswer {
 
     private final long surveyFormId;
     private final long surveyItemId;
     private final List<Integer> selectedNumbers;
 
-    public static MultipleChoiceSurveyAnswerItem of(long surveyFormId, SurveySubmitCommand command) {
-        return new MultipleChoiceSurveyAnswerItem(
+    public static MultipleChoiceSurveyItemAnswer of(long surveyFormId, SubmittedSurveyItemAnswer command) {
+        return new MultipleChoiceSurveyItemAnswer(
                 surveyFormId,
                 command.surveyItemId(),
                 command.getMultipleChoiceItemAnswer()
         );
     }
 
-    private MultipleChoiceSurveyAnswerItem(long surveyFormId, long surveyItemId, List<Integer> selectedNumbers) {
+    private MultipleChoiceSurveyItemAnswer(long surveyFormId, long surveyItemId, List<Integer> selectedNumbers) {
         // TODO : selectedNumbers 일급 컬렉션으로, 또는 SurveyItemSelectedOptions 활용
         if (selectedNumbers.isEmpty()) {
             throw new SurveyAppException(ExceptionCode.INVALID_VALUE);

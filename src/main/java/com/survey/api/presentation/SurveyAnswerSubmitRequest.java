@@ -1,7 +1,7 @@
 package com.survey.api.presentation;
 
-import com.survey.api.domain.survey.submit.SurveyAnswerItemCommand;
-import com.survey.api.domain.survey.submit.SurveySubmitCommand;
+import com.survey.api.domain.survey.submit.SubmittedSurveyItemAnswerValue;
+import com.survey.api.domain.survey.submit.SubmittedSurveyItemAnswer;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ public record SurveyAnswerSubmitRequest(
         long surveyItemId,
         List<SurveyItemAnswerRequest> itemAnswers
 ) {
-    public SurveySubmitCommand toCommand() {
-        return new SurveySubmitCommand(
+    public SubmittedSurveyItemAnswer toDomain() {
+        return new SubmittedSurveyItemAnswer(
                 surveyItemId,
                 itemAnswers.stream()
-                        .map(SurveyItemAnswerRequest::toCommand)
+                        .map(SurveyItemAnswerRequest::toDomain)
                         .toList()
         );
     }
@@ -24,14 +24,13 @@ public record SurveyAnswerSubmitRequest(
         Integer singleChoiceItemAnswer,
         Integer multipleChoiceItemAnswer
     ) {
-        public SurveyAnswerItemCommand toCommand() {
-            return new SurveyAnswerItemCommand(
+        public SubmittedSurveyItemAnswerValue toDomain() {
+            return new SubmittedSurveyItemAnswerValue(
                     shortQuestionAnswer,
                     longQuestionAnswer,
                     singleChoiceItemAnswer,
                     multipleChoiceItemAnswer
             );
         }
-
     }
 }

@@ -2,7 +2,7 @@ package com.survey.api.domain.survey.submit;
 
 import java.util.List;
 
-public interface SurveyAnswerItem {
+public interface SurveyItemAnswer {
 
     List<SurveyAnswerEntity> toEntities();
 }

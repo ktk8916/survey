@@ -5,21 +5,21 @@ import com.survey.api.global.SurveyAppException;
 
 import java.util.List;
 
-public class SingleChoiceSurveyAnswerItem implements SurveyAnswerItem {
+public class SingleChoiceSurveyItemAnswer implements SurveyItemAnswer {
 
     private final long surveyFormId;
     private final long surveyItemId;
     private final int selectedNumber;
 
-    public static SingleChoiceSurveyAnswerItem of(long surveyFormId, SurveySubmitCommand command) {
-        return new SingleChoiceSurveyAnswerItem(
+    public static SingleChoiceSurveyItemAnswer of(long surveyFormId, SubmittedSurveyItemAnswer submittedAnswer) {
+        return new SingleChoiceSurveyItemAnswer(
                 surveyFormId,
-                command.surveyItemId(),
-                command.getSingleChoiceItemAnswer()
+                submittedAnswer.surveyItemId(),
+                submittedAnswer.getSingleChoiceItemAnswer()
         );
     }
 
-    private SingleChoiceSurveyAnswerItem(long surveyFormId, long surveyItemId, int selectedNumber) {
+    private SingleChoiceSurveyItemAnswer(long surveyFormId, long surveyItemId, int selectedNumber) {
         // TODO : selectedNumber vo로
         if (selectedNumber < 1) {
             throw new SurveyAppException(ExceptionCode.INVALID_VALUE);

@@ -2,8 +2,7 @@ package com.survey.api.application;
 
 import com.survey.api.domain.survey.item.SurveyItemEntity;
 import com.survey.api.domain.survey.item.SurveyItemReader;
-import com.survey.api.domain.survey.submit.SurveySubmitCommand;
-import com.survey.api.domain.survey.submit.SurveySubmitManager;
+import com.survey.api.domain.survey.submit.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +13,12 @@ import java.util.List;
 public class SurveySubmitService {
 
     private final SurveyItemReader surveyItemReader;
-    private final SurveySubmitManager surveySubmitManager;
+    private final SubmittedSurveyItemAnswerConvertor submittedSurveyItemAnswerConvertor;
+    private final SurveyAnswersAppender surveyAnswersAppender;
 
-    public void submit(long surveyFormId, List<SurveySubmitCommand> surveyAnswerCommands) {
+    public void submit(long surveyFormId, List<SubmittedSurveyItemAnswer> submittedSurveyItemAnswers) {
         List<SurveyItemEntity> surveyItems = surveyItemReader.read(surveyFormId);
-        surveySubmitManager.submit(surveyItems, surveyAnswerCommands);
+        List<SurveyItemAnswer> itemAnswers = submittedSurveyItemAnswerConvertor.convert(surveyItems, submittedSurveyItemAnswers);
+        surveyAnswersAppender.append(itemAnswers);
     }
 }

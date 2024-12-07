@@ -2,21 +2,21 @@ package com.survey.api.domain.survey.submit;
 
 import java.util.List;
 
-public class ShortSurveyAnswerItem implements SurveyAnswerItem {
+public class ShortSurveyItemAnswer implements SurveyItemAnswer {
 
     private static final int SHORT_SURVEY_ANSWER_MAX_LENGTH = 200;
     private final long surveyFormId;
     private final long surveyItemId;
     private final String value;
 
-    public static ShortSurveyAnswerItem of(long surveyFormId, SurveySubmitCommand command) {
-        return new ShortSurveyAnswerItem(
+    public static ShortSurveyItemAnswer of(long surveyFormId, SubmittedSurveyItemAnswer submittedAnswer) {
+        return new ShortSurveyItemAnswer(
                 surveyFormId,
-                command.surveyItemId(),
-                command.getShortQuestionAnswer());
+                submittedAnswer.surveyItemId(),
+                submittedAnswer.getShortQuestionAnswer());
     }
 
-    private ShortSurveyAnswerItem(long surveyFormId, long surveyItemId, String value) {
+    private ShortSurveyItemAnswer(long surveyFormId, long surveyItemId, String value) {
         if (value.isBlank() || value.length() > SHORT_SURVEY_ANSWER_MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
