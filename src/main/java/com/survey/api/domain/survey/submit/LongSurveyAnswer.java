@@ -16,7 +16,7 @@ public class LongSurveyAnswer implements SurveyAnswerItem {
         return new LongSurveyAnswer(
                 surveyFormId,
                 command.surveyItemId(),
-                command.getShortQuestionAnswer());
+                command.getLongQuestionAnswer());
     }
 
     private LongSurveyAnswer(long surveyFormId, long surveyItemId, String value) {
