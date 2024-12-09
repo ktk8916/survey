@@ -1,7 +1,5 @@
 package com.survey.api.domain.survey.item;
 
-import com.survey.api.global.ExceptionCode;
-import com.survey.api.global.SurveyAppException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +14,7 @@ public class SurveyItemManager {
 
     public void registerAll(long surveyFormId, List<SurveyItemCreateCommand> surveyItems) {
         if (surveyItems.isEmpty()) {
-            throw new SurveyAppException(ExceptionCode.INVALID_VALUE);
+            throw new IllegalArgumentException("survey items can't be empty");
         }
 
         surveyItems.forEach(

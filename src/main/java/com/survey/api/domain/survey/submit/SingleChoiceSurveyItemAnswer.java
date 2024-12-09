@@ -1,8 +1,5 @@
 package com.survey.api.domain.survey.submit;
 
-import com.survey.api.global.ExceptionCode;
-import com.survey.api.global.SurveyAppException;
-
 import java.util.List;
 
 public class SingleChoiceSurveyItemAnswer implements SurveyItemAnswer {
@@ -22,7 +19,7 @@ public class SingleChoiceSurveyItemAnswer implements SurveyItemAnswer {
     private SingleChoiceSurveyItemAnswer(long surveyFormId, long surveyItemId, int selectedNumber) {
         // TODO : selectedNumber vo로
         if (selectedNumber < 1) {
-            throw new SurveyAppException(ExceptionCode.INVALID_VALUE);
+            throw new IllegalArgumentException("selected number must be positive");
         }
         this.surveyFormId = surveyFormId;
         this.surveyItemId = surveyItemId;

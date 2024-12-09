@@ -17,9 +17,9 @@ public class SurveyFormEntity {
     private String name;
     private String description;
 
-    public static SurveyFormEntity begin(SurveyVersionEntity initialVersion, String name, String description) {
+    public static SurveyFormEntity initial(SurveyVersionEntity initialVersion, String name, String description) {
         if (initialVersion.isNotFirstVersion()) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("is not initial version");
         }
 
         return SurveyFormEntity.builder()
@@ -31,7 +31,7 @@ public class SurveyFormEntity {
 
     public static SurveyFormEntity release(SurveyVersionEntity releaseVersion, String name, String description) {
         if (releaseVersion.isFirstVersion()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("can't release initial version");
         }
 
         return SurveyFormEntity.builder()
@@ -41,7 +41,7 @@ public class SurveyFormEntity {
                 .build();
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

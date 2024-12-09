@@ -1,7 +1,5 @@
 package com.survey.api.domain.survey.item;
 
-import com.survey.api.global.ExceptionCode;
-import com.survey.api.global.SurveyAppException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
@@ -30,6 +28,6 @@ public enum SurveyItemType {
         return Arrays.stream(SurveyItemType.values())
                 .filter(itemType -> itemType.name().equalsIgnoreCase(name))
                 .findAny()
-                .orElseThrow(() -> new SurveyAppException(ExceptionCode.INVALID_VALUE, name));
+                .orElseThrow(() -> new IllegalArgumentException(String.format("type name %s does not exist", name)));
     }
 }

@@ -12,8 +12,6 @@ public class SurveyAnswersAppender {
     private final SurveyAnswerRepository surveyAnswerRepository;
 
     public void append(List<SurveyItemAnswer> surveyItemAnswers) {
-        surveyItemAnswers.forEach(
-                surveyAnswerItem -> surveyAnswerRepository.saveAll(surveyAnswerItem.toEntities())
-        );
+        surveyItemAnswers.forEach(surveyAnswerItem -> surveyAnswerRepository.saveAll(surveyAnswerItem.toEntities()));
     }
 }

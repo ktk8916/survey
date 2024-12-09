@@ -1,8 +1,5 @@
 package com.survey.api.domain.survey.submit;
 
-import com.survey.api.global.ExceptionCode;
-import com.survey.api.global.SurveyAppException;
-
 import java.util.List;
 
 public class MultipleChoiceSurveyItemAnswer implements SurveyItemAnswer {
@@ -22,7 +19,7 @@ public class MultipleChoiceSurveyItemAnswer implements SurveyItemAnswer {
     private MultipleChoiceSurveyItemAnswer(long surveyFormId, long surveyItemId, List<Integer> selectedNumbers) {
         // TODO : selectedNumbers 일급 컬렉션으로, 또는 SurveyItemSelectedOptions 활용
         if (selectedNumbers.isEmpty()) {
-            throw new SurveyAppException(ExceptionCode.INVALID_VALUE);
+            throw new IllegalArgumentException("selection numbers in multiple choice can't be empty");
         }
         this.surveyFormId = surveyFormId;
         this.surveyItemId = surveyItemId;

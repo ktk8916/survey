@@ -1,8 +1,6 @@
 package com.survey.api.domain.survey.submit;
 
 import com.survey.api.domain.survey.item.SurveyItemEntity;
-import com.survey.api.global.ExceptionCode;
-import com.survey.api.global.SurveyAppException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +16,7 @@ public class SubmittedSurveyItemAnswerConvertor {
 
     public List<SurveyItemAnswer> convert(List<SurveyItemEntity> surveyItems, List<SubmittedSurveyItemAnswer> itemAnswers) {
         if (isValidSubmit(surveyItems, itemAnswers)) {
-            throw new SurveyAppException(ExceptionCode.INVALID_VALUE);
+            throw new IllegalArgumentException("answers size can't be greater than items size");
         }
 
         Map<Long, SubmittedSurveyItemAnswer> itemAnswerMap = getItemAnswerMap(itemAnswers);
@@ -44,7 +42,7 @@ public class SubmittedSurveyItemAnswerConvertor {
     private boolean isSubmitted(SurveyItemEntity surveyItem, Map<Long, SubmittedSurveyItemAnswer> itemAnswerMap) {
         boolean contains = itemAnswerMap.containsKey(surveyItem.getId());
         if (surveyItem.isRequired() && !contains) {
-            throw new SurveyAppException(ExceptionCode.INVALID_VALUE);
+            throw new IllegalArgumentException(String.format("item %d is required submission", surveyItem.getId()));
         }
         return contains;
     }
