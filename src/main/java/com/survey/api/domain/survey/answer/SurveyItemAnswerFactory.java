@@ -1,4 +1,4 @@
-package com.survey.api.domain.survey.submit;
+package com.survey.api.domain.survey.answer;
 
 import com.survey.api.domain.survey.item.SurveyItemType;
 import org.springframework.stereotype.Component;

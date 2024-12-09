@@ -2,7 +2,7 @@ package com.survey.api.application;
 
 import com.survey.api.domain.survey.item.SurveyItemEntity;
 import com.survey.api.domain.survey.item.SurveyItemReader;
-import com.survey.api.domain.survey.submit.*;
+import com.survey.api.domain.survey.answer.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

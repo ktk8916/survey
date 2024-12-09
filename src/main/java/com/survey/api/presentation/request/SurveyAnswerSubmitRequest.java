@@ -1,7 +1,7 @@
-package com.survey.api.presentation;
+package com.survey.api.presentation.request;
 
-import com.survey.api.domain.survey.submit.SubmittedSurveyItemAnswerValue;
-import com.survey.api.domain.survey.submit.SubmittedSurveyItemAnswer;
+import com.survey.api.domain.survey.answer.SubmittedSurveyItemAnswerValue;
+import com.survey.api.domain.survey.answer.SubmittedSurveyItemAnswer;
 
 import java.util.List;
 

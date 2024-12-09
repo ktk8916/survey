@@ -1,18 +1,18 @@
-package com.survey.api.presentation;
+package com.survey.api.presentation.request;
 
-import com.survey.api.domain.survey.form.SurveyCreateCommand;
+import com.survey.api.domain.survey.form.SurveyModifyCommand;
 import com.survey.api.domain.survey.item.SurveyItemCreateCommand;
 
 import java.util.List;
 
-public record SurveyCreateRequest(
-    String name,
-    String description,
-    List<SurveyItemRequest> surveyItems
+public record SurveyModifyRequest(
+        String name,
+        String description,
+        List<SurveyItemRequest> surveyItems
 ) {
 
-    public SurveyCreateCommand toCommand() {
-        return new SurveyCreateCommand(
+    public SurveyModifyCommand toCommand() {
+        return new SurveyModifyCommand(
                 name,
                 description,
                 surveyItems.stream()
